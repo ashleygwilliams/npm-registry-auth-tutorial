@@ -1,12 +1,16 @@
+#!/usr/bin/env node
+const argv = require('yargs').argv;
+
 const Promise = require("bluebird");
 const request = Promise.promisify(require("request"));
 
 const registry = "https://registry.npmjs.org";
 const auth_route = registry + "/-/user/org.couchdb.user:";
-const user_name = "ag_dubs";
 
-var user_data = function(ar, un) {
+var user_data = function(ar) {
+  const un = argv.user;
   const user = ar + un;
+  
   request(user).then(function(result) {
     const body = JSON.parse(result.body);
     const name = body.name;
@@ -17,4 +21,4 @@ var user_data = function(ar, un) {
   });
 };
 
-user_data(auth_route, user_name);
+user_data(auth_route);
