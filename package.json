@@ -1,0 +1,24 @@
+{
+  "name": "npm-registry-auth-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashleygwilliams/npm-registry-auth-tutorial.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashleygwilliams/npm-registry-auth-tutorial/issues"
+  },
+  "homepage": "https://github.com/ashleygwilliams/npm-registry-auth-tutorial#readme",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "request": "^2.75.0"
+  }
+}
