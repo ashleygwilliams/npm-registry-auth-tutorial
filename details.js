@@ -12,12 +12,18 @@ var user_data = function(ar) {
   const user = ar + un;
   
   request(user).then(function(result) {
-    const body = JSON.parse(result.body);
-    const name = body.name;
-    const email = body.email;
-    console.log("user details\n--------------\n" +
-                "name: " + name + "\n" +
-                "email: " + email + "\n");
+    if (!result.statusCode === 200) {
+      const body = JSON.parse(result.body);
+      const name = body.name;
+      const email = body.email;
+      console.log("user details\n--------------\n" +
+                  "name: " + name + "\n" +
+                  "email: " + email + "\n");
+    } else {
+      console.log("ERROR\n--------------\n" +
+                  "Status Code: " + result.statusCode + "\n" +
+                  "Message: " + result.statusMessage + "\n");
+    }
   });
 };
 
