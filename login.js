@@ -28,7 +28,10 @@ var login_user = function(ar) {
     json: true
   }).then(function(result) {
     if (result.statusCode == 201) {
-      console.log(result.body);
+      const token = result.body.token;
+      console.log("user details\n--------------\n" +
+                  "name: " + un + "\n" +
+                  "token: " + token + "\n");
     } else {
       console.log("ERROR\n--------------\n" +
                   "Status Code: " + result.statusCode + "\n" +
