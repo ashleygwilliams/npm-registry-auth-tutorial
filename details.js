@@ -12,7 +12,7 @@ var user_data = function(ar) {
   const user = ar + un;
   
   request(user).then(function(result) {
-    if (!result.statusCode === 200) {
+    if (result.statusCode == 200) {
       const body = JSON.parse(result.body);
       const name = body.name;
       const email = body.email;

@@ -20,13 +20,14 @@ var login_user = function(ar) {
       "Content-Type": "application/json",
     },
     body: {
+      name: un,
       email: email,
       auth_token: true,
       password: password
     },
     json: true
   }).then(function(result) {
-    if (!result.statusCode === 201) {
+    if (result.statusCode == 201) {
       console.log(result.body);
     } else {
       console.log("ERROR\n--------------\n" +
