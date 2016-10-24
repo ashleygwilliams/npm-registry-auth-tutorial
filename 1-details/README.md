@@ -69,15 +69,23 @@ Let's write this up using the [`request`] library and hard-coding an npm usernam
 
 1  const Promise = require("bluebird");
 2  const request = Promise.promisify(require("request"));
-3 
-4  const url = "https://registry.npmjs.org/-/user/org.couchdb.user:";
-5  const username = "ag_dubs"; // feel free to replace with your username!
-6  const user = url + username;
+3
+4  const registry_user = "https://registry.npmjs.org/-/user/org.couchdb.user:";
+5  const user_name = "ag_dubs";
+6  const user = registry_user + user_name;
 7
 8  request(user).then(function(result) {
 9    console.log(result.body);
 10 });
 ```
+
+In this code, we:
+
+1. Store the user route, `https://registry.npmjs.org/-/user/org.couchdb.user:`,
+  the username, `ag_dubs`
+2. We concatenate those 2 strings to create the URL we need
+3. We make a `GET` request to the URL
+4. We log the body of the reponse to that request in the console
 
 This should log the exact same thing to the console as we saw in the browser above.
 
@@ -117,7 +125,7 @@ should print out what it did previously. If you don't get an error, and do get a
 reponse, you know it worked!
 
 ```
-detail.js
+details.js
 ```
 
 ### Retrieving the username from the command line
@@ -137,8 +145,8 @@ npm install yargs --save
 ```js
 // details.js
 
-1 #!/usr/bin/env node
-2 const argv = require('yargs').argv; // <-----
+1  #!/usr/bin/env node
+2  const argv = require('yargs').argv; // <----
 ...
 ```
 
@@ -147,9 +155,9 @@ Now we can use the yargs package to replace our hardcoded username.
 ```js
 // details.js
 ...
-4  const url = "https://registry.npmjs.org/-/user/org.couchdb.user:";
-5  const username = argv.user; // <-----
-6  const user = url + username;
+4  const registry_user = "https://registry.npmjs.org/-/user/org.couchdb.user:";
+5  const user_name = argv.user; // <----
+6  const user = registry_user + user_name;
 ...
 ```
 
@@ -165,3 +173,5 @@ detail.js --user=<username>
 ```
 details.js --user=ag_dubs
 ```
+
+### Pretty printouts and catching errors
